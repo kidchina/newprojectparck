@@ -1,0 +1,16 @@
+.input-container {
+    position: relative;
+  }
+  
+  
+  .input-container .icon {
+    position: absolute;
+    top: 50%;
+    right: 17px;
+    transform: translateY(-50%);
+    color: rgb(34, 35, 96);
+    font-size: 18px;
+} 
+             
+  
+  
