@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    {%extends 'base.html'%}
+    {% load static %}
+
+  <body>
+    {% block content %}
+
+    {% if parking_details %}
+    <div class = "main-wrapper">
+        <div class = "container">
+            <div class = "product-div">
+                <div class = "product-div-left">
+                    <div class = "img-container">
+                      <img src="{% static url 'image/park.jpg' %}" alt="watch">
+                    </div>
+                    <div class = "hover-container">
+                        
+                    </div>
+                </div>
+             
+        <!-- Display other relevant parking details -->
+                <div class = "product-div-right">
+                    <span class = "product-name">{{ parking_details.name }}</span>
+                    <h5>{{ parking_details.formatted_address }}</h5>
+                    <h3>{{ parking_details.profile_photo_url }}</h3>
+                    <span class = "product-price">5.25 DH</span>
+                    <div class = "product-rating">
+                        <span><i class = "fas fa-star"></i></span>
+                        <span><i class = "fas fa-star"></i></span>
+                        <span><i class = "fas fa-star"></i></span>
+                        <span><i class = "fas fa-star"></i></span>
+                        <span><i class = "fas fa-star-half-alt"></i></span>
+                        <span><b>{{ parking_details.rating }}</b></span>
+                    </div>
+                    {% endif %} 
+                    <form method="get">
+                        {% csrf_token %}
+                        <p class = "product-description">parking souterrain de Tanger, situé près de la place du 9 avril, sera ouvert à partir du vendredi 9 septembre. Il est doté d’une capacité de 214 places de stationnement sur trois niveaux. </p>
+                        <div class = "btn-groups">
+                            <button type = "submit" class = "add-cart-btn"><i class = "fas fa-shopping-cart"></i>Reserver</button>
+                            <button type = "submit" class = "buy-now-btn"><i class = "fas fa-wallet"></i>page d'accueil</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock content %}
+</body>
+
+</html>

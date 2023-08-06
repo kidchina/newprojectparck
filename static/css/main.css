@@ -1876,18 +1876,46 @@ h1, h2, h3, h4, h5, h6 {
 # Header
 --------------------------------------------------------------*/
 #header {
-  padding: 14px 0;
+  padding: 8px 0;
   position: fixed;
   left: 0;
   top: 0;
   right: 0;
   transition: all 0.5s;
   z-index: 997;
+  background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(0,212,255,0) 100%);
 }
 
+#header::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+ /* Add a thin line at the bottom of the header */
+}
+
+#header:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+   /* Add a black color with 0.2 opacity from top to middle */
+}
+
+
+
+
+
 #header.header-scrolled {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0);
   transition: all 0.5s;
+  opacity: 0.8;
 }
 
 @media (max-width: 673px) {
@@ -1912,6 +1940,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header #logo img {
+  max-width: 145px;
   padding: 0;
   margin: 0;
 }
@@ -2011,31 +2040,51 @@ h1, h2, h3, h4, h5, h6 {
 /* Nav Meu Container */
 #nav-menu-container {
   margin: 0;
+  margin-right: 5.5cm !important;
 }
 
 @media (min-width: 1024px) {
   #nav-menu-container {
     padding-right: 60px;
+   
+    
   }
 }
 
 @media (max-width: 960px) {
   #nav-menu-container {
     display: none;
+    margin-right: 5.5cm !important;
+   
+    
+   
   }
 }
 
+
+
 /* Nav Meu Styling */
 .nav-menu a {
-  padding: 6px 10px;
+  padding: 10px 15px;
   text-decoration: none;
   display: inline-block;
   color: #fff;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 12px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   outline: none;
+  transition: filter 0.3s ease;
+  opacity: 1;
+  margin-left: 20px;
+ 
 }
+
+
+.nav-menu a:hover {
+ color: #4cd3e3; /* Increase brightness on hover */
+
+}
+
 
 .nav-menu > li {
   margin-left: 10px;
@@ -2213,7 +2262,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .p1-gradient-bg,
-.overlay-bg,
+.banner-area .overlay-bg,
 .sidebar .single-slidebar .cat-list li:hover,
 .callto-action-area,
 .single-price:hover .price-bottom,
@@ -2328,9 +2377,12 @@ body.mobile-nav-active #mobile-nav-toggle {
 .banner-content h1 {
   font-size: 48px;
   font-weight: 300;
-  line-height: 1em;
+  line-height: 1.2em;
   margin-top: 20px;
+  color: #fff; /* Choose a suitable text color for contrast */
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4); /* Add a subtle text shadow for emphasis */
 }
+
 
 .banner-content h1 span {
   color: #49e4fa;
@@ -2371,10 +2423,11 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .banner-content .form-wrap {
-  background-color: #a998f6;
-  border: 1px solid #b8aaf3;
-  padding: 20px 0;
+  background-color: rgba(169, 152, 246, 0.2);
+  border: 1px solid rgba(184, 170, 243, 0.8);
+  padding: 20px;
   margin: 40px 0;
+  border-radius: 7px;
 }
 
 .banner-content .form-wrap .nice-select {
@@ -2388,14 +2441,21 @@ body.mobile-nav-active #mobile-nav-toggle {
   width: 8cm;
 }
 
-.banner-content .form-wrap .btn-info {
-  background-color: #49e4fa;
-  width: 100%;
-  height: 100%;
-  color: #fff;
-  border-radius: 4;
-  border: none;
-  text-transform: uppercase;
+/* Add a custom class to the button for more specific styling */
+.custom-btn {
+  color: #000000; /* Black font color */
+  background-color: #45CFDD; /* Background color */
+  border: none; /* Remove border */
+  padding: 7px 20px; /* Add padding to make the button more visible */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Add a pointer cursor on hover */
+  /* Add any other styles you want for the button */
+}
+
+/* Optionally, you can change the button style on hover */
+.custom-btn:hover {
+  background-color: #137a86; /* Change the background color on hover */
+  /* Add any other styles you want for the button on hover */
 }
 
 .banner-content .form-wrap .btn-info {
@@ -2524,7 +2584,15 @@ body.mobile-nav-active #mobile-nav-toggle {
   background-color: white;
   box-shadow: 0px 0px 40px 0px rgba(132, 144, 255, 0.2);
   padding: 25px 0;
+  transition: transform 0.3s;
 }
+
+.single-feature:hover {
+  transform: translateY(-5px); /* Move the element up by 5 pixels on hover */
+  box-shadow: 0px 0px 40px 0px rgba(132, 144, 255, 0.4); /* Adjust the box shadow to create a subtle effect */
+}
+
+
 
 .single-feature p {
   margin-bottom: 0;

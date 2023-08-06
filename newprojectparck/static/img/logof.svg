@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 318.97 100.38">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3, .cls-4 {
+        fill: #1b1f50;
+      }
+
+      .cls-5 {
+        font-family: Nexa-Trial-Black, Nexa-Trial;
+        font-weight: 800;
+      }
+
+      .cls-2 {
+        stroke: #231f20;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-6 {
+        fill: #0b666b;
+        font-size: 62px;
+      }
+
+      .cls-4, .cls-7 {
+        font-size: 37.77px;
+      }
+
+      .cls-7 {
+        fill: #231f20;
+      }
+    </style>
+  </defs>
+  <g>
+    <path class="cls-3" d="M10.76,0h0C16.7,0,21.52,4.82,21.52,10.76V83.2H0V10.76C0,4.82,4.82,0,10.76,0Z"/>
+    <circle class="cls-2" cx="10.76" cy="12.21" r="6.36"/>
+    <path class="cls-3" d="M17.11,6.14H174.83c3.43,0,6.21,2.78,6.21,6.21h0c0,3.43-2.78,6.21-6.21,6.21H17.11V6.14h0Z"/>
+  </g>
+  <text class="cls-5" transform="translate(26.97 83.2)"><tspan class="cls-6" x="0" y="0">AMZ</tspan><tspan class="cls-7" x="146.75" y="0">-</tspan><tspan class="cls-4" x="165.56" y="0">ABRID</tspan></text>
+  <polygon class="cls-1" points="30.42 7.06 47.3 7.06 42.31 17.36 26.04 17.36 30.42 7.06"/>
+  <polygon class="cls-1" points="59.22 7.06 76.1 7.06 71.11 17.36 54.84 17.36 59.22 7.06"/>
+  <polygon class="cls-1" points="88.02 7.06 104.9 7.06 99.91 17.36 83.64 17.36 88.02 7.06"/>
+  <polygon class="cls-1" points="116.82 7.06 133.7 7.06 128.71 17.36 112.44 17.36 116.82 7.06"/>
+  <polygon class="cls-1" points="145.62 7.06 162.5 7.06 157.51 17.36 141.24 17.36 145.62 7.06"/>
+</svg>

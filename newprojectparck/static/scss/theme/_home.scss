@@ -100,7 +100,7 @@
 //--------- Start Banner Area -------------//
 
 .banner-area {
-	background:url(../img/header-bg.jpg) center;
+	background:url(../img/flacha.jpg) center;
 	background-size:cover;
 	.overlay-bg{
 		@extend .p1-gradient-bg;
@@ -377,7 +377,7 @@
 	}
 
 	.single-post{
-		padding:30px;		
+		padding:7px;		
 		background-color:$offwhite;
 		margin-bottom:30px;
 		h6{
@@ -508,42 +508,26 @@
 	    margin-right: 5px;
 	    @include transition();
 	}
+	
 
 	.owl-dot.active {
 		@include transition;
 	    background:$primary-color;
 	}
 
-	.single-slidebar{
-		background-color: $offwhite;
-		padding:30px 20px;
-		margin-bottom:30px;
-		h4{
-			margin-bottom:20px;
-		}
-		.cat-list{
-			li{
-				padding:0px 10px;
-				background-color:$white;
-				@include transition();
-				&:hover{
-					@extend .p1-gradient-bg;
-					a{
-						color:$white;
-					}
-				}
-			}
-			p{
-				margin-bottom:0;
-			}
-			a{
-				color:#777;
-				padding:10px;
-				margin-bottom:10px;
-			}
+	/* Custom styles for the single-slidebar */
+/* Custom styles for the single-slidebar */
 
-		}
-	}
+  
+  
+  .left-sidebar {
+	text-align: left;
+  }
+  
+  .right-sidebar {
+	text-align: right;
+  }
+  
 
 	.single-rated{
 		img{

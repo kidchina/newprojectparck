@@ -1,0 +1,113 @@
+{%extends 'base.html'%}
+		
+			{% load static %}
+			
+    {% block content %}
+	<body >
+			  <header id="header" id="home" >
+			    <div class="container">
+			    	<div class="row align-items-center justify-content-between d-flex">
+						<div id="logo" >
+							<a href="{% url 'index' %}">
+								<img src="{% static 'img/amzbrid-light.png' %}"  />
+							</a>
+						</div>
+				      <nav id="nav-menu-container" >
+						<ul class="nav-menu">
+						  <li class="menu-active"><a href="{% url 'index' %}">Home</a></li>
+						  <li><a href="about-us.html">About Us</a></li>
+						  <li><a href="category.html">Services</a></li>
+						  <li><a href="contact.html">Contact</a></li>
+						</ul>
+					  </nav>
+					  <!-- #nav-menu-container -->		    		
+			    	</div>
+			    </div>
+			</header>
+			 
+			  <div id="container">
+				<div id="placesdiv">
+					
+					<!-- Content for "placesdiv" goes here -->
+				</div>
+				
+				<div id="map"></div>
+				
+			</div>
+	
+
+			<style>
+				 body {
+  /* Center and cover the background image */
+  background: url('{% static "img/flacha.jpg" %}') center;
+  background-size: cover;
+  position: relative; /* Add this to make the overlay position relative to the body */
+}
+
+	body::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.7); /* Change the last value (0.5) to adjust the opacity (0.0 to 1.0) */
+	z-index: -1;
+	}
+
+			
+				.klch{
+					background-color: black;
+				}
+				#container {
+					display: flex;
+					padding: 0cm;
+					width: 97%;
+					margin-top: 1.5cm;
+					margin-left: 0.4cm;
+				}
+			
+				#map {
+					width: 18cm;
+					flex: 2;
+					height: 400px;
+					background-color: #f9f9f9;
+					
+				}
+			
+				#placesdiv {
+  width: 15cm;
+  padding: 40px;
+  background-color: #F9F9F9;
+  border-radius: 1px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: auto;
+  max-height: 400px; /* Set the maximum height for the scrollable content */
+} 
+#placesdiv::-webkit-scrollbar {
+  width: 6px;
+}
+
+#placesdiv::-webkit-scrollbar-thumb {
+  background-color: #a2abaf;
+  border-radius: 10px;
+}
+
+#placesdiv::-webkit-scrollbar-thumb:hover {
+  background-color: #b3b3b3;
+}
+			
+				/* Separator style */
+				.separator {
+					width: 1px;
+					background-color: #ccc;
+					margin: 0 5px;
+				}
+			</style>
+			
+			  
+				  
+			<!-- Load the Google Maps JavaScript API     key= AIzaSyBwaHyIsDZrPQVS2OTSks-s4sAsnvLu8tM-->
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuga0rxBnch_BCzWW1NA8WJdrTcvdfbpo&callback=initMap&libraries=places" async defer></script>
+			<script src="{% static 'maps.js' %}"></script>
+			  {% endblock content %}

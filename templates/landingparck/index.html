@@ -1,17 +1,20 @@
 {%extends 'base.html'%}
 		<body>
-     
+			{% load static %}
     {% block content %}
-
+	<div id="fullpage">
+<section class="section">
 			  <header id="header" id="home">
 			    <div class="container">
 			    	<div class="row align-items-center justify-content-between d-flex">
-				      <div id="logo">
-				        <a href="index.html"><img src="img/logo.png" alt="" title="" /></a>
-				      </div>
-				      <nav id="nav-menu-container">
+						<div id="logo" >
+							<a href="{% url 'index' %}">
+								<img src="{% static 'img/amzbrid-light.png' %}"  />
+							</a>
+						</div>
+				      <nav id="nav-menu-container" >
 						<ul class="nav-menu">
-						  <li class="menu-active"><a href="index.html">Home</a></li>
+						  <li class="menu-active"><a href="{% url 'index' %}">Home</a></li>
 						  <li><a href="about-us.html">About Us</a></li>
 						  <li><a href="category.html">Services</a></li>
 						  <li><a href="contact.html">Contact</a></li>
@@ -20,29 +23,48 @@
 					  <!-- #nav-menu-container -->		    		
 			    	</div>
 			    </div>
-			  </header><!-- #header -->
+			  </header>
+			  <!-- #header -->
 
-
+			 
 			<!-- start banner Area -->
-			<section class="banner-area relative" id="home"  style="height: 400px ;">	
-        <div class="overlay overlay-bg"></div>
+			<section class="banner-area relative" id="home"  >	
+       
         <div class="container">
           <div class="row fullscreen d-flex align-items-center justify-content-center">
             <div class="banner-content col-lg-12">
               <h1 class="text-white">Find your nearest Car Parks</h1>	
-              <form action="" class="search-form-area">
+				<form
+				action="{% url 'locate' %}"
+				method="get"
+				class="search-form-area"
+			  >
                 <div class="row justify-content-center form-wrap">
                   <div class="input-container">
-                    <input type="text" class="form-control px-4 input-field" placeholder="Your ZIP code or City. e.g. New York" id="search_input">
-                    <i class="fas fa-location-dot icon" id="iconloc" onclick="getlocation()"></i>
+                    <input type="text" class="form-control px-4 input-field" placeholder="Enter your destination address" id="search_input">
+                  
+						<i class="fas fa-location-dot icon" id="iconloc" onclick="getlocation()"></i>
                   </div>
                   
                   
                   
                   <div class="col-lg-2 form-cols">
-                    <button type="button" class="btn btn-info">
-                      <span class="lnr lnr-magnifier"></span> Search
-                    </button>
+                    <!-- Add the "custom-btn" class to the button element -->
+				<button type="submit" class="btn btn-primary custom-btn">Search</button>
+
+					<br>
+					<input
+					type="text"
+					id = "latitude"
+					name = "latitude"
+					hidden
+				  />
+				  <input
+					type="text"
+					id = "longitude"
+					name = "longitude"
+					hidden
+				  />
                   </div>								
                 </div>
               </form>	
@@ -56,7 +78,7 @@
 			<!-- End banner Area -->	
 
 			<!-- Start features Area -->
-			<section class="features-area" style="margin-top: -55px;">
+			<section class="features-area " >
         <div class="container">
           <div class="row justify-content-center align-items-center"> <!-- Added align-items-center class -->
             <div class="col-lg-3 col-md-6 align-self-stretch">
@@ -81,606 +103,337 @@
             </div>
           </div>
         </div>
+
       </section>
-      
-      
+	</section>   
+	  <style>
+		/* CSS for the sidebar and job post container */
+		.sidebar-section {
+		  display: flex;
+		  justify-content: center;
+		}
+	  
+		.single-slidebar {
+		  margin-bottom: 30px;
+		  width: 12cm; /* Increased width for the slidebars */
+		  padding: 0 10px; /* Add some padding to create distance between sidebars */
+		  box-sizing: border-box; /* Include padding in width calculation */
+		  border: 1px solid #ddd; /* Border color */
+		  border-radius: 5px; /* Rounded corners */
+		  box-shadow:0px 0px 40px 0px rgba(132, 144, 255, 0.2);
+		  background-color: white;
+		  height: 9.7cm;
+		  /* Box shadow */
+		   /* Background color */
+		}
+	  
+		.single-rated {
+		  /* Your existing styles for the individual divs */
+		  padding: 10px;
+		  height: 10cm; /* Reduced height for the slidebars */
+		}
+	  
+		/* Clearfix for content after the sidebars */
+		.clearfix::after {
+		  content: "";
+		  display: table;
+		  clear: both;
+		}
+	  
+		/* Optional: To add space between sidebars and the top/bottom of the container */
+		.post-area {
+		  max-height: 22cm; /* Set the maximum height to avoid vertical scrollbar */
+		  overflow-x: auto; /* Enable horizontal scrolling if needed */
+		  padding: 28px 0;
+		  margin-top: -22px;
+		 
+	/* Set the background image to not repeat */
+ 		
+		}
 
-      
-      
-			<!-- End features Area -->
-			
-			<!-- Start popular-post Area -->
-			<section class="popular-post-area pt-100">
-				<div class="container">
-					<div class="row align-items-center">
-						<div class="active-popular-post-carusel">
-							<div class="single-popular-post d-flex flex-row">
-								<div class="thumb">
-									<img class="img-fluid" src="img/p1.png" alt="">
-									<a class="btns text-uppercase" href="#">view job post</a>
-								</div>
-								<div class="details">
-									<a href="#"><h4>Creative Designer</h4></a>
-									<h6>Los Angeles</h6>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis.
-									</p>
-								</div>
-							</div>	
-							<div class="single-popular-post d-flex flex-row">
-								<div class="thumb">
-									<img src="img/p2.png" alt="">
-									<a class="btns text-uppercase" href="#">view job post</a>
-								</div>
-								<div class="details">
-									<a href="#"><h4>Creative Designer</h4></a>
-									<h6>Los Angeles</h6>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis.
-									</p>
-								</div>
-							</div>
-							<div class="single-popular-post d-flex flex-row">
-								<div class="thumb">
-									<img src="img/p1.png" alt="">
-									<a class="btns text-uppercase" href="#">view job post</a>
-								</div>
-								<div class="details">
-									<a href="#"><h4>Creative Designer</h4></a>
-									<h6>Los Angeles</h6>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis.
-									</p>
-								</div>
-							</div>	
-							<div class="single-popular-post d-flex flex-row">
-								<div class="thumb">
-									<img src="img/p2.png" alt="">
-									<a class="btns text-uppercase" href="#">view job post</a>
-								</div>
-								<div class="details">
-									<a href="#"><h4>Creative Designer</h4></a>
-									<h6>Los Angeles</h6>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis.
-									</p>
-								</div>
-							</div>	
-							<div class="single-popular-post d-flex flex-row">
-								<div class="thumb">
-									<img src="img/p1.png" alt="">
-									<a class="btns text-uppercase" href="#">view job post</a>
-								</div>
-								<div class="details">
-									<a href="#"><h4>Creative Designer</h4></a>
-									<h6>Los Angeles</h6>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis.
-									</p>
-								</div>
-							</div>	
-							<div class="single-popular-post d-flex flex-row">
-								<div class="thumb">
-									<img src="img/p2.png" alt="">
-									<a class="btns text-uppercase" href="#">view job post</a>
-								</div>
-								<div class="details">
-									<a href="#"><h4>Creative Designer</h4></a>
-									<h6>Los Angeles</h6>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis.
-									</p>
-								</div>
-							</div>																																							
-						</div>
-					</div>
-				</div>	
-			</section>
-			<!-- End popular-post Area -->
-			
-			<!-- Start feature-cat Area -->
-			<section class="feature-cat-area pt-100" id="category">
-				<div class="container">
-					<div class="row d-flex justify-content-center">
-						<div class="menu-content pb-60 col-lg-10">
-							<div class="title text-center">
-								<h1 class="mb-10">Featured Job Categories</h1>
-								<p>Who are in extremely love with eco friendly system.</p>
-							</div>
-						</div>
-					</div>						
-					<div class="row">
-						<div class="col-lg-2 col-md-4 col-sm-6">
-							<div class="single-fcat">
-								<a href="category.html">
-									<img src="img/o1.png" alt="">
-								</a>
-								<p>Accounting</p>
-							</div>
-						</div>
-						<div class="col-lg-2 col-md-4 col-sm-6">
-							<div class="single-fcat">
-								<a href="category.html">
-									<img src="img/o2.png" alt="">
-								</a>
-								<p>Development</p>
-							</div>
-						</div>
-						<div class="col-lg-2 col-md-4 col-sm-6">
-							<div class="single-fcat">
-								<a href="category.html">
-									<img src="img/o3.png" alt="">
-								</a>
-								<p>Technology</p>
-							</div>
-						</div>
-						<div class="col-lg-2 col-md-4 col-sm-6">
-							<div class="single-fcat">
-								<a href="category.html">
-									<img src="img/o4.png" alt="">
-								</a>
-								<p>Media & News</p>
-							</div>
-						</div>
-						<div class="col-lg-2 col-md-4 col-sm-6">
-							<div class="single-fcat">
-								<a href="category.html">
-									<img src="img/o5.png" alt="">
-								</a>
-								<p>Medical</p>
-							</div>
-						</div>
-						<div class="col-lg-2 col-md-4 col-sm-6">
-							<div class="single-fcat">
-								<a href="category.html">
-									<img src="img/o6.png" alt="">
-								</a>
-								<p>Goverment</p>
-							</div>			
-						</div>																											
-					</div>
-				</div>	
-			</section>
-			<!-- End feature-cat Area -->
-			
-			<!-- Start post Area -->
-			<section class="post-area section-gap">
-				<div class="container">
-					<div class="row justify-content-center d-flex">
-						<div class="col-lg-8 post-list">
-							<ul class="cat-list">
-								<li><a href="#">Recent</a></li>
-								<li><a href="#">Full Time</a></li>
-								<li><a href="#">Intern</a></li>
-								<li><a href="#">part Time</a></li>
-							</ul>
-							<div class="single-post d-flex flex-row">
-								<div class="thumb">
-									<img src="img/post.png" alt="">
-									<ul class="tags">
-										<li>
-											<a href="#">Art</a>
-										</li>
-										<li>
-											<a href="#">Media</a>
-										</li>
-										<li>
-											<a href="#">Design</a>					
-										</li>
-									</ul>
-								</div>
-								<div class="details">
-									<div class="title d-flex flex-row justify-content-between">
-										<div class="titles">
-											<a href="single.html"><h4>Creative Art Designer</h4></a>
-											<h6>Premium Labels Limited</h6>					
-										</div>
-										<ul class="btns">
-											<li><a href="#"><span class="lnr lnr-heart"></span></a></li>
-											<li><a href="#">Apply</a></li>
-										</ul>
-									</div>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-									</p>
-									<h5>Job Nature: Full time</h5>
-									<p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-									<p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-								</div>
-							</div>
-							<div class="single-post d-flex flex-row">
-								<div class="thumb">
-									<img src="img/post.png" alt="">
-									<ul class="tags">
-										<li>
-											<a href="#">Art</a>
-										</li>
-										<li>
-											<a href="#">Media</a>
-										</li>
-										<li>
-											<a href="#">Design</a>					
-										</li>
-									</ul>
-								</div>
-								<div class="details">
-									<div class="title d-flex flex-row justify-content-between">
-										<div class="titles">
-											<a href="single.html"><h4>Creative Art Designer</h4></a>
-											<h6>Premium Labels Limited</h6>					
-										</div>
-										<ul class="btns">
-											<li><a href="#"><span class="lnr lnr-heart"></span></a></li>
-											<li><a href="#">Apply</a></li>
-										</ul>
-									</div>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-									</p>
-									<h5>Job Nature: Full time</h5>
-									<p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-									<p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-								</div>
-							</div>
-							<div class="single-post d-flex flex-row">
-								<div class="thumb">
-									<img src=" 'img/post.png" alt="">
-									<ul class="tags">
-										<li>
-											<a href="#">Art</a>
-										</li>
-										<li>
-											<a href="#">Media</a>
-										</li>
-										<li>
-											<a href="#">Design</a>					
-										</li>
-									</ul>
-								</div>
-								<div class="details">
-									<div class="title d-flex flex-row justify-content-between">
-										<div class="titles">
-											<a href="single.html"><h4>Creative Art Designer</h4></a>
-											<h6>Premium Labels Limited</h6>					
-										</div>
-										<ul class="btns">
-											<li><a href="#"><span class="lnr lnr-heart"></span></a></li>
-											<li><a href="#">Apply</a></li>
-										</ul>
-									</div>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-									</p>
-									<h5>Job Nature: Full time</h5>
-									<p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-									<p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-								</div>
-							</div>		
-							<div class="single-post d-flex flex-row">
-								<div class="thumb">
-									<img src="img/post.png" alt="">
-									<ul class="tags">
-										<li>
-											<a href="#">Art</a>
-										</li>
-										<li>
-											<a href="#">Media</a>
-										</li>
-										<li>
-											<a href="#">Design</a>					
-										</li>
-									</ul>
-								</div>
-								<div class="details">
-									<div class="title d-flex flex-row justify-content-between">
-										<div class="titles">
-											<a href="single.html"><h4>Creative Art Designer</h4></a>
-											<h6>Premium Labels Limited</h6>					
-										</div>
-										<ul class="btns">
-											<li><a href="#"><span class="lnr lnr-heart"></span></a></li>
-											<li><a href="#">Apply</a></li>
-										</ul>
-									</div>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-									</p>
-									<h5>Job Nature: Full time</h5>
-									<p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-									<p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-								</div>
-							</div>
-							<div class="single-post d-flex flex-row">
-								<div class="thumb">
-									<img src="img/post.png" alt="">
-									<ul class="tags">
-										<li>
-											<a href="#">Art</a>
-										</li>
-										<li>
-											<a href="#">Media</a>
-										</li>
-										<li>
-											<a href="#">Design</a>					
-										</li>
-									</ul>
-								</div>
-								<div class="details">
-									<div class="title d-flex flex-row justify-content-between">
-										<div class="titles">
-											<a href="single.html"><h4>Creative Art Designer</h4></a>
-											<h6>Premium Labels Limited</h6>					
-										</div>
-										<ul class="btns">
-											<li><a href="#"><span class="lnr lnr-heart"></span></a></li>
-											<li><a href="#">Apply</a></li>
-										</ul>
-									</div>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-									</p>
-									<h5>Job Nature: Full time</h5>
-									<p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-									<p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-								</div>
-							</div>
-							<div class="single-post d-flex flex-row">
-								<div class="thumb">
-									<img src="img/post.png" alt="">
-									<ul class="tags">
-										<li>
-											<a href="#">Art</a>
-										</li>
-										<li>
-											<a href="#">Media</a>
-										</li>
-										<li>
-											<a href="#">Design</a>					
-										</li>
-									</ul>
-								</div>
-								<div class="details">
-									<div class="title d-flex flex-row justify-content-between">
-										<div class="titles">
-											<a href="single.html"><h4>Creative Art Designer</h4></a>
-											<h6>Premium Labels Limited</h6>					
-										</div>
-										<ul class="btns">
-											<li><a href="#"><span class="lnr lnr-heart"></span></a></li>
-											<li><a href="#">Apply</a></li>
-										</ul>
-									</div>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-									</p>
-									<h5>Job Nature: Full time</h5>
-									<p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-									<p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-								</div>
-							</div>															
-							<div class="single-post d-flex flex-row">
-								<div class="thumb">
-									<img src="img/post.png" alt="">
-									<ul class="tags">
-										<li>
-											<a href="#">Art</a>
-										</li>
-										<li>
-											<a href="#">Media</a>
-										</li>
-										<li>
-											<a href="#">Design</a>					
-										</li>
-									</ul>
-								</div>
-								<div class="details">
-									<div class="title d-flex flex-row justify-content-between">
-										<div class="titles">
-											<a href="single.html"><h4>Creative Art Designer</h4></a>
-											<h6>Premium Labels Limited</h6>					
-										</div>
-										<ul class="btns">
-											<li><a href="#"><span class="lnr lnr-heart"></span></a></li>
-											<li><a href="#">Apply</a></li>
-										</ul>
-									</div>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-									</p>
-									<h5>Job Nature: Full time</h5>
-									<p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-									<p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-								</div>
-							</div>	
-							
-							<a class="text-uppercase loadmore-btn mx-auto d-block" href="category.html">Load More job Posts</a>
+	  
+		/* Set the distance between sidebars to approximately 3 cm */
+		.single-slidebar:nth-child(2n) {
+		  margin-left: 3cm; /* 3 cm space between slidebars */
+		}
+	  
+		.methodf {
+		  text-align: center;
+		  font-size: 15px;
+		}
+	  
+		/* Style for the images inside slidebars */
+		.single-rated img {
+		  width: 100%; /* Make the images responsive within the slidebars */
+		  height: auto; /* Let the height adjust automatically based on the image size */
+		  object-fit: cover; /* Maintain image aspect ratio */
+		  border-radius: 5px; /* Rounded corners for the images */
+		  margin-bottom: 10px; /* Add some space between image and content */
+		}
+		.centered-div {
+		  text-align: center;
+		  margin-top: 1.7cm;
+		  
+		}
+		.centered-div h4{
+			font-size: 25px;
+		}
+		.centered-p{
+			text-align: center;
+			margin-bottom: 1cm;
 
-						</div>
-						<div class="col-lg-4 sidebar">
-							<div class="single-slidebar">
-								<h4>Jobs by Location</h4>
-								<ul class="cat-list">
-									<li><a class="justify-content-between d-flex" href="category.html"><p>New York</p><span>37</span></a></li>
-									<li><a class="justify-content-between d-flex" href="category.html"><p>Park Montana</p><span>57</span></a></li>
-									<li><a class="justify-content-between d-flex" href="category.html"><p>Atlanta</p><span>33</span></a></li>
-									<li><a class="justify-content-between d-flex" href="category.html"><p>Arizona</p><span>36</span></a></li>
-									<li><a class="justify-content-between d-flex" href="category.html"><p>Florida</p><span>47</span></a></li>
-									<li><a class="justify-content-between d-flex" href="category.html"><p>Rocky Beach</p><span>27</span></a></li>
-									<li><a class="justify-content-between d-flex" href="category.html"><p>Chicago</p><span>17</span></a></li>
-								</ul>
-							</div>
-
-							<div class="single-slidebar">
-								<h4>Top rated job posts</h4>
-								<div class="active-relatedjob-carusel">
-									<div class="single-rated">
-										<img class="img-fluid" src="img/r1.jpg" alt="">
-										<a href="single.html"><h4>Creative Art Designer</h4></a>
-										<h6>Premium Labels Limited</h6>
-										<p>
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-										</p>
-										<h5>Job Nature: Full time</h5>
-										<p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-										<p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-										<a href="#" class="btns text-uppercase">Apply job</a>
-									</div>
-									<div class="single-rated">
-										<img class="img-fluid" src="img/r1.jpg" alt="">
-										<a href="single.html"><h4>Creative Art Designer</h4></a>
-										<h6>Premium Labels Limited</h6>
-										<p>
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-										</p>
-										<h5>Job Nature: Full time</h5>
-										<p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-										<p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-										<a href="#" class="btns text-uppercase">Apply job</a>
-									</div>
-									<div class="single-rated">
-										<img class="img-fluid" src="img/r1.jpg" alt="">
-										<a href="single.html"><h4>Creative Art Designer</h4></a>
-										<h6>Premium Labels Limited</h6>
-										<p>
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-										</p>
-										<h5>Job Nature: Full time</h5>
-										<p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-										<p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-										<a href="#" class="btns text-uppercase">Apply job</a>
-									</div>																		
-								</div>
-							</div>							
-
-							<div class="single-slidebar">
-								<h4>Jobs by Category</h4>
-								<ul class="cat-list">
-									<li><a class="justify-content-between d-flex" href="category.html"><p>Technology</p><span>37</span></a></li>
-									<li><a class="justify-content-between d-flex" href="category.html"><p>Media & News</p><span>57</span></a></li>
-									<li><a class="justify-content-between d-flex" href="category.html"><p>Goverment</p><span>33</span></a></li>
-									<li><a class="justify-content-between d-flex" href="category.html"><p>Medical</p><span>36</span></a></li>
-									<li><a class="justify-content-between d-flex" href="category.html"><p>Restaurants</p><span>47</span></a></li>
-									<li><a class="justify-content-between d-flex" href="category.html"><p>Developer</p><span>27</span></a></li>
-									<li><a class="justify-content-between d-flex" href="category.html"><p>Accounting</p><span>17</span></a></li>
-								</ul>
-							</div>
-
-							<div class="single-slidebar">
-								<h4>Carrer Advice Blog</h4>
-								<div class="blog-list">
-									<div class="single-blog " style="background:#000 url(img/blog1.jpg);">
-										<a href="single.html"><h4>Home Audio Recording <br>
-										For Everyone</h4></a>
-										<div class="meta justify-content-between d-flex">
-											<p>
-												02 Hours ago
-											</p>
-											<p>
-												<span class="lnr lnr-heart"></span>
-												06
-												 <span class="lnr lnr-bubble"></span>
-												02
-											</p>
-										</div>
-									</div>
-									<div class="single-blog " style="background:#000 url(img/blog2.jpg);">
-										<a href="single.html"><h4>Home Audio Recording <br>
-										For Everyone</h4></a>
-										<div class="meta justify-content-between d-flex">
-											<p>
-												02 Hours ago
-											</p>
-											<p>
-												<span class="lnr lnr-heart"></span>
-												06
-												 <span class="lnr lnr-bubble"></span>
-												02
-											</p>
-										</div>
-									</div>
-									<div class="single-blog " style="background:#000 url(img/blog1.jpg);">
-										<a href="single.html"><h4>Home Audio Recording <br>
-										For Everyone</h4></a>
-										<div class="meta justify-content-between d-flex">
-											<p>
-												02 Hours ago
-											</p>
-											<p>
-												<span class="lnr lnr-heart"></span>
-												06
-												 <span class="lnr lnr-bubble"></span>
-												02
-											</p>
-										</div>
-									</div>																		
-								</div>
-							</div>							
-
-						</div>
-					</div>
-				</div>	
-			</section>
-			<!-- End post Area -->
+		}
+		.methodf{
+					text-align: center;
+					font-size: 15px;
+				}
+		.parks_description-area{
+		max-height: 22cm; /* Set the maximum height to avoid vertical scrollbar */
+		  overflow-x: auto; /* Enable horizontal scrolling if needed */
+		  padding: 3cm 0;
+		  height: 30cm;
+		  margin-top: -2.7cm;
+		}
+		
+		.stok{
+			margin-top: 1cm;
+		}
+		.card_img{
+			height: 5cm;
+			width: 15cm;
+		}
+	  </style>
+	  
+	  <section class="post-area section">
+		<div class="centered-div">
+			<h4>Discover Nearby Car Parks: How Can You Find Them?</h4>
+		  </div>
+		  <br>
+		  <div class="centered-p">
+			<p>
+			  Are you looking for convenient and hassle-free ways to locate nearby car parks?<br>
+				Our website offers two efficient methods to help you find the perfect parking spot.
+			</p>
+		  </div>
+		<div class="container">
+		  <div class="sidebar-section">
+			<div class="single-slidebar">
+			  <h1 style="height: 0.5cm;"></h1>
+			  <div class="single-rated">
+				<!-- Job post content for the first sidebar -->
+				<img class="img-fluid" src="{% static 'img/fastwrite.gif' %}" style="height: 4cm;" alt="">
+				<a href="single.html"><h4 class="methodf">Method 1: Interactive Destination Entry</h4></a>
 				
+				<p>			
+				  Say goodbye to typing full addresses! With this method, simply start typing your destination, 
+				  and our smart system will continue suggesting options based on what you've written.
+				  Similar to Google Maps, our website provides real-time suggestions,
+				  making it easier for you to find the ideal car park closest to your desired location.
+				</p>
+				
+			  </div>
+			</div>
+	  
+			<div class="single-slidebar">
+			  <h1 style="height: 0.5cm;"></h1>
+			  <div class="single-rated">
+				<!-- Job post content for the second sidebar -->
+				<img class="img-fluid" src="{% static 'img/locateicon.gif' %}" style="height: 4cm;" alt="">
+				<a href="single.html"><h4 class="methodf">Method 2: One-Click Location Detection</h4></a>
+				
+				<p>
+				  For those who prefer a seamless approach, we offer the second method:
+				  a one-click location detection feature. Just click on the designated icon, 
+				  and our website will pinpoint your current location accurately. 
+				  This way, you can effortlessly explore nearby car parks without the need for manual input.
+				</p>
+				
+			  </div>
+			</div>
+		</section>
+	  
+		  <!-- Add the clearfix after the sidebars -->
+		
+<section class="section">
+	  <div class="container">
+		<div class="parks_description-area">
+			<div class="centered-div hbt">
+				<h4>Discover your ideal parking effortlessly with our website.</h4>
+			</div>
+			<div class="content-wrapper">
+				<div class="image-container">
+					<img src="{% static 'img/cards_img.png' %}" class="card_img" alt="">
+				</div>
+				<div class="text-container">
+					<p>
+						These images showcase the cards featuring various car parks with their
+						essential information such as names, rates, addresses, durations,
+						and distances from your location. Explore these examples to get a glimpse
+						of the user-friendly interface that simplifies your parking experience.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
 
-			<!-- Start callto-action Area -->
-			<section class="callto-action-area section-gap" id="join">
-				<div class="container">
-					<div class="row d-flex justify-content-center">
-						<div class="menu-content col-lg-9">
-							<div class="title text-center">
-								<h1 class="mb-10 text-white">Join us today without any hesitation</h1>
-								<p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-								<a class="primary-btn" href="#">I am a Candidate</a>
-								<a class="primary-btn" href="#">Request Free Demo</a>
-							</div>
-						</div>
-					</div>	
-				</div>	
-			</section>
-			<!-- End calto-action Area -->
+</div>
+	<style>
+		.hbt{
+			margin-top: 0.7cm;
+		}
+	.content-wrapper {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		margin-top: 1cm;
+	}
+	
+	.image-container {
+		flex: 1;
+		padding-right: 20px;
+	}
+	
+	.card_img {
+		max-width: 100%;
+		height: auto;
+		border-radius: 8px;
+		
+	}
+	
+	.text-container {
+		flex: 1;
+		padding-left: 20px;
+	}
+	
+	.text-container p {
+		font-size: 16px;
+		line-height: 1.6;
+		color: #333;
+	}
+	</style>
 
-			<!-- Start download Area -->
-			<section class="download-area section-gap" id="app">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-6 download-left">
-							<img class="img-fluid" src="img/d1.png" alt="">
-						</div>
-						<div class="col-lg-6 download-right">
-							<h1>Download the <br>
-							Job Listing App Today!</h1>
-							<p class="subs">
-								It won’t be a bigger problem to find one video game lover in your neighbor. Since the introduction of Virtual Game, it has been achieving great heights so far as its popularity and technological advancement are concerned.
-							</p>
-							<div class="d-flex flex-row">
-								<div class="buttons">
-									<i class="fa fa-apple" aria-hidden="true"></i>
-									<div class="desc">
-										<a href="#">
-											<p>
-												<span>Available</span> <br>
-												on App Store
-											</p>
-										</a>
-									</div>
-								</div>
-								<div class="buttons">
-									<i class="fa fa-android" aria-hidden="true"></i>
-									<div class="desc">
-										<a href="#">
-											<p>
-												<span>Available</span> <br>
-												on Play Store
-											</p>
-										</a>
-									</div>
-								</div>									
-							</div>						
-						</div>
-					</div>
-				</div>	
-			</section>
+
+			
+			
+    <!-- Content below the sidebars goes here -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Google Maps JavaScript library AIzaSyCuga0rxBnch_BCzWW1NA8WJdrTcvdfbpo-->
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyCuga0rxBnch_BCzWW1NA8WJdrTcvdfbpo" ></script>
+
+<script>
+
+    new fullpage('#fullpage', {
+        autoScrolling: true,
+        scrollHorizontally: true,
+        // Add more options as needed
+    });
+
+
+
+  var searchInput = 'search_input';
+   
+  $(document).ready(function () {
+   var autocomplete;
+   autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+    types: ['geocode'],
+    
+   });
+    
+   google.maps.event.addListener(autocomplete, 'place_changed', function () {
+    var near_place = autocomplete.getPlace();
+    var autocompleted = document.getElementById(searchInput).value ; 
+    // data upload
+    document.getElementById('latitude').value = near_place.geometry.location.lat() ; 
+    document.getElementById('longitude').value = near_place.geometry.location.lng() ; 
+
+   });
+   const apiKey = 'AIzaSyCuga0rxBnch_BCzWW1NA8WJdrTcvdfbpo';
+
+// Get the input field and add an event listener
+const inputField = document.getElementById('search_input');
+//inputField.addEventListener('change', geocodeAddress);
+
+// Geocode the address
+function geocodeAddress() {
+  const address = inputField.value;
+  const apiKey = 'AIzaSyBmWCdJsMcQeiSWcVrvx9dyJ1wKxQCp6xE';
+  console.log(address);
+  // Construct the Geocoding API request URL
+  const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${apiKey}`;
+  console.log(apiUrl); 
+  // Send the API request
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      // Handle the API response
+      const results = data.results;
+      if (results && results.length > 0) {
+        // Extract the latitude and longitude
+        const location = results[0].geometry.location;
+        const latitude = location.lat;
+        const longitude = location.lng;
+
+        // Use the latitude and longitude values as needed
+        //initMap(latitude,longitude);
+        console.log('Latitude:', latitude);
+        console.log('Longitude:', longitude);
+        document.getElementById('latitude').value = latitude ; 
+        document.getElementById('longitude').value = longitude ; 
+
+       
+      } else {
+        console.log('No results found');
+      }
+    })
+    .catch(error => {
+      console.log('Error occurred:', error);
+    });
+}
+  });
+  var getlocation = () =>{ 
+      if (navigator.geolocation){
+          navigator.geolocation.getCurrentPosition((position) => {
+              var lat =  position.coords.latitude  ; 
+              var long = position.coords.longitude ; 
+              document.getElementById('latitude').value = lat ; 
+              document.getElementById('longitude').value = long ; 
+              convertCoordinatesToAddress(lat, long);
+
+          })
+      }
+  
+      else{
+          alert('try again '); 
+      }
+  }
+
+
+  function convertCoordinatesToAddress(latitude, longitude) {
+  var geocoder = new google.maps.Geocoder();
+  var latLng = new google.maps.LatLng(latitude, longitude);
+
+  geocoder.geocode({ 'latLng': latLng }, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+      if (results[0]) {
+        var address = results[0].formatted_address;
+        console.log(address) ; 
+        document.getElementById('search_input').value = address;
+      } else {
+        console.log('No results found');
+      }
+    } else {
+      console.log('Geocoder failed due to: ' + status);
+    }
+  });
+}
+
+
+
+  </script>
+			
+			
       {% endblock content %}
 			<!-- End download Area -->
 		

@@ -16,10 +16,14 @@
   background:rgba(#000,.8);
   transition: all 0.5s;
 }
-
+#logo{
+  margin-left:20px;
+  width: 2cm !important;
+}
 @media(max-width:673px){
   #logo{
       margin-left:20px;
+    
   }
 }
 

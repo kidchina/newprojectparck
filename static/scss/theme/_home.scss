@@ -513,74 +513,18 @@
 		@include transition;
 	    background:$primary-color;
 	}
+	/* Custom styles for the single-slidebar */
 
-	.single-slidebar{
-		background-color: $offwhite;
-		padding:30px 20px;
-		margin-bottom:30px;
-		h4{
-			margin-bottom:20px;
-		}
-		.cat-list{
-			li{
-				padding:0px 10px;
-				background-color:$white;
-				@include transition();
-				&:hover{
-					@extend .p1-gradient-bg;
-					a{
-						color:$white;
-					}
-				}
-			}
-			p{
-				margin-bottom:0;
-			}
-			a{
-				color:#777;
-				padding:10px;
-				margin-bottom:10px;
-			}
+  
+  .left-sidebar {
+	text-align: left;
+  }
+  
+  .right-sidebar {
+	text-align: right;
+  }
+  
 
-		}
-	}
-
-	.single-rated{
-		img{
-			margin-bottom:20px;
-		}
-		h4{
-			margin-bottom:8px;
-		}
-		h6{
-			font-weight:300;
-			margin-bottom:10px;	
-		}
-		h5{
-			font-weight:300;
-			margin-bottom:5px;
-		}
-		.address{
-			color:$black;
-			margin-bottom:8px;
-		}
-		.btns{
-			background-color:$primary-color;
-			color:$white;
-			border:1px solid transparent;
-			display:inline-block;
-			margin-top:10px;
-			padding:10px 25px;
-			@include transition();
-			&:hover{
-				background-color:transparent;
-				border-color:$primary-color;
-				color:$primary-color;
-
-			}
-		}
-
-	}
 	.single-blog{
 		background-size:cover !important;
 		padding:0px 20px;
